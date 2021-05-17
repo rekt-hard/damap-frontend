@@ -1,0 +1,13 @@
+<div id="content" style="'max-width: 1440px;'">
+  <h2>Plans</h2>
+  <section>
+    <button mat-button [routerLink]="'/dmp'" mat-raised-button color="primary">Create</button>
+  </section>
+
+  <div *ngIf="dmpsLoaded$ | async">
+    <app-dmp-table [dmps]="dmps$ | async" (createDocument)="getDocument($event)" (createJsonFile)="getJsonFile($event)"></app-dmp-table>
+  </div>
+  <div *ngIf="!(dmpsLoaded$ | async)">
+  </div>
+</div>
+

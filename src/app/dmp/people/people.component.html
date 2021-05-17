@@ -1,0 +1,110 @@
+<!-- TODO: Hint functions? -->
+<!-- CONTACT -->
+<div *ngIf="contactStep != null && contactStep.value != null">
+  <p>Contact person:</p>
+  <mat-card class="mat-selected">
+    <div class="mat-card-container">
+      <div class="mat-card-left">
+        <div>
+          <mat-icon class="mat-icon-style">person</mat-icon>
+          {{contactStep.value.firstName}} {{contactStep.value.lastName}}</div>
+        <mat-icon class="mat-icon-style">mail_outline</mat-icon>
+        {{contactStep.value.mbox}}
+      </div>
+      <div class="mat-card-right">
+        <button mat-button (click)="changeContactPerson(null)" title="Remove as contact">
+          <mat-icon color="white">delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-card>
+</div>
+
+<!-- CONTRIBUTORS -->
+<div *ngIf="contributorStep != null && contributorStep.length > 0">
+  <p>Contributors:</p>
+  <mat-card *ngFor="let i=index; let contributor of contributorStep.controls" class="mat-selected">
+    <div class="mat-card-container">
+      <div class="mat-card-left">
+        <div>
+          <div>
+            <mat-icon class="mat-icon-style">person</mat-icon>
+            {{contributor.value.person.firstName}} {{contributor.value.person.lastName}}
+          </div>
+          <mat-icon class="mat-icon-style">mail_outline</mat-icon>
+          {{contributor.value.person.mbox}}
+        </div>
+
+      </div>
+      <div>
+        <form [formGroup]="contributor">
+          <mat-form-field appearance="fill">
+            <mat-label>Role</mat-label>
+            <mat-select formControlName="role">
+              <mat-option
+                *ngFor="let role of roles | keyvalue" [value]="role.value">
+                {{role.value}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+      </div>
+      <div class="mat-card-right">
+        <button mat-button (click)="changeContactPerson(contributor.value.person)"
+                *ngIf="contactStep.value.id !== contributor.value.person.id" title="Set as contact">
+          <mat-icon>contact_mail</mat-icon>
+        </button>
+        <button mat-button (click)="removeContributor(i)" title="Remove from contributors">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-card>
+</div>
+
+<!-- SEARCH -->
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>Search for person...</mat-label>
+    <!--    <span matPrefix>+1 &nbsp;</span>-->
+    <input type="search" matInput>
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</form>
+
+<!-- LIST OF PEOPLE -->
+<div class="list-container" *ngIf="projectMembers?.length > 0 else empty">
+  <mat-card *ngFor="let person of (projectMembers | contributorFilter: contributorStep.value)">
+    <div class="mat-card-container">
+      <div class="mat-card-left">
+        <div>
+          <mat-icon class="mat-icon-style">person</mat-icon>
+          {{person.person?.firstName}} {{person.person?.lastName}}
+        </div>
+        <mat-icon class="mat-icon-style">mail_outline</mat-icon>
+        {{person.person?.mbox}}
+      </div>
+      <div class="mat-card-right">
+        <button mat-raised-button *ngIf="contactStep.value?.universityId != person.person?.universityId"
+                (click)="changeContactPerson(person.person)"
+                title="Set as contact">
+          <mat-icon>contact_mail</mat-icon>
+        </button>
+        <button mat-raised-button (click)="addContributor(person.person)" title="Add as contributor">
+          <mat-icon>person_add</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="mat-card-container" *ngIf="person.roleInProject">
+      <div class="projectRoleTag">
+        {{person.roleInProject}}
+      </div>
+      <div class="personIdentifier">
+
+      </div>
+    </div>
+  </mat-card>
+</div>
+<ng-template #empty>
+  No project members available.
+</ng-template>
