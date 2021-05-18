@@ -155,5 +155,8 @@
       }
     }
   },
-  "defaultProject": "dmap-frontend"
+  "defaultProject": "dmap-frontend",
+  "cli": {
+    "analytics": "f174a763-aefc-4a88-83c3-fe0f4a26d75d"
+  }
 }

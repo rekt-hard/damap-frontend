@@ -3,7 +3,7 @@ mat-nav-list {
 }
 
 .mm-navbars-top a {
-  color: #fff;
+  color: #000;
 }
 
 .mm-navbars-top {
@@ -22,7 +22,7 @@ mat-nav-list {
   padding: 0;
   border: none;
   position: relative;
-  background-color: var(--main-color);
+  background-color: #fff; /*var(--main-color);*/
   color: #fff;
   width: 100%;
   float: left;
@@ -71,7 +71,7 @@ mat-nav-list {
   padding-right: 4px;
   line-height: 26px;
   white-space: nowrap;
-  background-color: var(--accent-color-darker);
+  background-color: #e4154b;/*var(--accent-color-darker);*/
   transition: background .3s ease;
 }
 
@@ -135,8 +135,8 @@ A[data-lang-active-en] {
 }
 
 #mainHeaderLogo A svg {
-  width: 60px;
-  height: 60px;
+  width: 140px;
+  height: 100px;
 }
 
 svg {
@@ -160,7 +160,7 @@ svg {
 .nav-item-desktop {
   padding: 0 15px 0 15px;
   text-decoration: none;
-  color: var(--main-color);
+  color: #e4154b /*var(--main-color)*/;
   text-transform: uppercase;
   line-height: 70px;
   font-family: FFDINWebPro,sans-serif;
@@ -200,7 +200,7 @@ svg {
 }
 
 .mainHeaderNav a:focus {
-  outline: var(--main-color) solid 3px;
+  outline: #e4154b solid 3px;
   outline-offset: -3px;
 }
 
@@ -222,8 +222,8 @@ svg {
   }
 
   #mainHeaderLogo A svg {
-    width: 75px;
-    height: 75px;
+    width: 140px;
+    height: 100px;
   }
 
   #mainHeader {
@@ -245,7 +245,8 @@ svg {
     padding-left: 15px;
     border-left: none;
     font-weight: 700;
-    border-bottom: 3px solid var(--main-color);
+    /*border-bottom: 3px solid var(--main-color);*/
+    border-bottom: 3px solid #e4154b;
   }
 
   .nav-item-mobile {
@@ -262,4 +263,66 @@ svg {
     padding: 0;
   }
 
+}
+
+footer {
+  height: 0%;
+  width: 100%;
+  min-width: 1400px;
+  /*padding: 5px 0;*/
+  background-color: #e9f2fd;
+  position: absolute;
+  bottom:0;
+  right: 0;
+  left: 0;
+  /*z-index: 3;*/
+  float:left;
+}
+
+#background-photo{
+height: 197px;
+width: 100%;
+background-image: url("../../assets/tugrazimage.jpg");
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center center;
+/*transition: opacity 0.2s linear 0s;*/
+opacity: 0.2;
+}
+
+#header-h2{
+font-size: 1.5em;
+margin-block-start: 0.83em;
+margin-block-end: 0.83em;
+margin-inline-start: 0px;
+margin-inline-end: 0px;
+font-weight: bold;
+font-weight: 300;
+font-size: 24px;
+}
+
+#p-first{
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  line-height: 26px;
+}
+
+#position-footer-firstcol{
+text-align: center;
+float: left;
+width: 50%;
+}
+
+#position-footer-secondcol{
+text-align: center;
+float: left;
+width: 15%;
+}
+
+#position-footer-thirdcol{
+text-align: center;
+float: right;
+width: 25%;
 }
