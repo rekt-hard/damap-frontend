@@ -60,6 +60,7 @@ import { ContributorFilterPipe } from './pipe/contributor-filter.pipe';
 import {LicenseSelectorDialog, LicenseWizardComponent} from './widgets/license-wizard/license-wizard.component';
 import {LicenseFilterPipe} from './widgets/license-wizard/license-filter.pipe';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 const keycloakService = new KeycloakService();
 
@@ -131,7 +132,9 @@ const keycloakService = new KeycloakService();
     MatTooltipModule,
     MatExpansionModule,
     MatSnackBarModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatAutocompleteModule
+
   ],
   providers: [
     AppComponent,

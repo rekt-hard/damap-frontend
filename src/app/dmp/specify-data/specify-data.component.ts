@@ -44,6 +44,8 @@ export class SpecifyDataComponent implements OnInit {
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
+  optionsResearchData: string[] = ['The formats PDFA, CSV, MPEG-4, TIFF are used for this purpose. Where conversion to an open format is not possible, original formats are saved'];
+
   constructor(private formBuilder: FormBuilder, public dialog: MatDialog) {
   }
 
