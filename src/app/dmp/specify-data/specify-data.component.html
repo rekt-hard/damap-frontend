@@ -93,7 +93,7 @@
   <mat-form-field [style]="'width:100%;'" *ngIf="specifyDataStep.value.kind === none" appearance="fill">
     <mat-label>Please explain why you won't create or analyse any research data.</mat-label>
     <!--<textarea matInput formControlName="explanation"></textarea>-->
-    <input type = "text" matInput [matAutocomplete] = "autoc"/>
+    <input type = "text" matInput formControlName="explanation" [matAutocomplete] = "autoc"/>
           <mat-autocomplete #autoc = "matAutocomplete">
               <mat-option *ngFor = "let option of optionsResearchData" [value] = "option">
                   {{option}}

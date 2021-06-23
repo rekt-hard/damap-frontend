@@ -3,7 +3,7 @@
     <mat-label class="wrap-label">Who is the target audience and who could be interested in reusing the data and why?
     </mat-label>
     <!--<textarea matInput formControlName="targetAudience"></textarea>-->
-    <input type = "text" matInput [matAutocomplete] = "auto"/>
+    <input type = "text" matInput formControlName="targetAudience" [matAutocomplete] = "auto"/>
           <mat-autocomplete #auto = "matAutocomplete">
               <mat-option *ngFor = "let option of optionsTargetAudience" [value] = "option">
                   {{option}}
@@ -16,7 +16,7 @@
       (re-)use the data.
     </mat-label>
      <!--<textarea matInput formControlName="tools"></textarea>-->
-     <input type = "text" matInput [matAutocomplete] = "auto1"/>
+     <input type = "text" matInput formControlName="tools" [matAutocomplete] = "auto1"/>
           <mat-autocomplete #auto1 = "matAutocomplete">
               <mat-option *ngFor = "let option of optionsPotentialUsers" [value] = "option">
                   {{option}}
