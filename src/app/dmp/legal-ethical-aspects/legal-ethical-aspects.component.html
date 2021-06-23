@@ -23,7 +23,7 @@
   <mat-form-field appearance="fill" [style]="'width:100%'">
     <mat-label>Links to ethics report or related document:</mat-label>
      <!--<textarea matInput formControlName="ethicsReport"></textarea>-->
-    <input type = "text" matInput [matAutocomplete] = "autol"/>
+    <input type = "text" matInput formControlName="ethicsReport" [matAutocomplete] = "autol"/>
     <mat-autocomplete #autol = "matAutocomplete">
         <mat-option *ngFor = "let option of optionsLinksEthics" [value] = "option">
           <a href="https://tu4u.tugraz.at/fileadmin/public/Studierende_und_Bedienstete/Directives_and_regulations_of_TU_Graz/Safeguarding_Good_Scientific_Practice_Guidelines.pdf"> {{option}} 
