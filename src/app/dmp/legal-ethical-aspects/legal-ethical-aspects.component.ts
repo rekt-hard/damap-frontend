@@ -9,6 +9,8 @@ import {FormGroup} from '@angular/forms';
 export class LegalEthicalAspectsComponent implements OnInit {
 
   @Input() legalEthicalStep: FormGroup;
+  
+  optionsLinksEthics:string[] = ['Guidelines on Safeguarding Good Scientific Practice']; 
 
   questions = [
     {label: 'Will personal data be collected/used as part of the project?', model: 'personalInformation'},

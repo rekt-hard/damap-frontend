@@ -3,8 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 import { KeycloakConfig } from 'keycloak-js';
 
+<<<<<<< HEAD
 /*
 const keycloakConfig: KeycloakConfig = {
+=======
+/*const keycloakConfig: KeycloakConfig = {
+>>>>>>> master
   url: $KEYCLOAK.DAMAP_KEYCLOAK_DEV,
   realm: $KEYCLOAK.DAMAP_REALM_DEV,
   clientId: $KEYCLOAK.DAMAP_CLIENT_ID_DEV
@@ -20,6 +24,18 @@ const keycloakConfig: KeycloakConfig = {
 export const environment = {
   production: false,
   backendUrl: $BACKEND.DAMAP_DEV,
+  keycloakConfig
+};*/
+
+const keycloakConfig: KeycloakConfig = {
+  url: 'http://localhost:8180/auth',
+  realm: 'quarkus',
+  clientId: 'dmap'
+};
+
+export const environment = {
+  production: false,
+  backendUrl: 'http://localhost:8080/',
   keycloakConfig
 };
 
