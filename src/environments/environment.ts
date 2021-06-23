@@ -8,23 +8,18 @@ import { KeycloakConfig } from 'keycloak-js';
   realm: $KEYCLOAK.DAMAP_REALM_DEV,
   clientId: $KEYCLOAK.DAMAP_CLIENT_ID_DEV
 };
+*/
 
 export const environment = {
   production: false,
   backendUrl: $BACKEND.DAMAP_DEV,
   keycloakConfig
-};*/
-
-const keycloakConfig: KeycloakConfig = {
-  url: 'http://localhost:8180/auth',
-  realm: 'quarkus',
-  clientId: 'dmap'
 };
 
-export const environment = {
-  production: false,
-  backendUrl: 'http://localhost:8080/',
-  keycloakConfig
+const keycloakConfig: KeycloakConfig = {
+  url: 'https://auth-test.tugraz.at/auth',
+  realm: 'tugraz',
+  clientId: 'dmap-test_tugraz_at'
 };
 
 /*
