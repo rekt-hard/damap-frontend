@@ -94,11 +94,13 @@
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
-            "browserTarget": "dmap-frontend:build"
+            "browserTarget": "dmap-frontend:build",
+            "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {
-              "browserTarget": "dmap-frontend:build:production"
+              "browserTarget": "dmap-frontend:build:production",
+              "proxyConfig": "src/proxy.conf.json"
             }
           }
         },
