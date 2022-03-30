@@ -3,23 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 import { KeycloakConfig } from 'keycloak-js';
 
-/*const keycloakConfig: KeycloakConfig = {
+const keycloakConfig: KeycloakConfig = {
   url: $KEYCLOAK.DAMAP_KEYCLOAK_DEV,
   realm: $KEYCLOAK.DAMAP_REALM_DEV,
   clientId: $KEYCLOAK.DAMAP_CLIENT_ID_DEV
 };
-*/
 
 export const environment = {
   production: false,
   backendUrl: $BACKEND.DAMAP_DEV,
   keycloakConfig
-};
-
-const keycloakConfig: KeycloakConfig = {
-  url: 'https://auth-test.tugraz.at/auth',
-  realm: 'tugraz',
-  clientId: 'dmap-test_tugraz_at'
 };
 
 /*

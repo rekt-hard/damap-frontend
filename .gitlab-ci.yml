@@ -1,0 +1,31 @@
+variables:
+  TEST: test
+  CONTAINER_NAME: madmp-frontend
+  IMAGE_NAME: registry.gitlab.tugraz.at/madmps/dmap-frontend:test
+
+# Pipline stages
+stages:
+  - build
+
+
+build-stage:
+  stage: build
+  before_script:
+    - echo "running... before_script"
+    - echo "login to docker..."
+    - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
+    - docker stop $CONTAINER_NAME || true && docker rm $CONTAINER_NAME || true
+    - docker rmi -f $IMAGE_NAME
+  script:
+    - echo "running... script"
+    - echo "Build base image..."
+    - docker build --no-cache -t "$CI_REGISTRY_IMAGE":$TEST .
+    - docker push "$CI_REGISTRY_IMAGE":$TEST
+  after_script:
+    - echo "Logout from docker..." 
+    - "docker logout ${CI_REGISTRY}"
+  only:
+    - master
+    - merge_requests
+  tags:
+   - madmps-test
