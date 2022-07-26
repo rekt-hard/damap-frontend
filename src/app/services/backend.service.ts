@@ -20,7 +20,7 @@ import {Dataset} from '../domain/dataset';
 })
 export class BackendService {
 
-  private backendUrl = !environment.production ? 'http://localhost:8080/api/' : `${window.location.origin}/api/`
+  private backendUrl = !environment.production ? 'http://localhost:8085/api/' : `${window.location.origin}/api/`
   private dmpBackendUrl = this.backendUrl + 'dmps'
   private versionBackendUrl = this.backendUrl + 'versions'
   private projectBackendUrl = this.backendUrl + 'projects';

@@ -17,7 +17,7 @@ export class ConfigService {
 
   private static getHost(): string {
     if (isDevMode()) {
-      return 'http://localhost:8080/api';
+      return 'http://localhost:8085/api';
     }
     return `${window.location.origin}/api`;
   }
