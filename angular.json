@@ -30,7 +30,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/custom-theme.scss",
+              "src/styles.css"
             ],
             "scripts": []
           },
@@ -90,9 +91,14 @@
         },
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
+          "options": {
+            "browserTarget": "damap-frontend:build",
+            "proxyConfig": "src/proxy.conf.json"
+          },
           "configurations": {
             "production": {
-              "browserTarget": "damap-frontend:build:production"
+              "browserTarget": "damap-frontend:build:production",
+              "proxyConfig": "src/proxy.conf.json"
             },
             "development": {
               "browserTarget": "damap-frontend:build:development"
@@ -134,12 +140,25 @@
               "src/**/*.html"
             ]
           }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "damap-frontend:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "damap-frontend:serve:production"
+            }
+          }
         }
       }
     }
   },
   "defaultProject": "damap-frontend",
   "cli": {
-    "defaultCollection": "@angular-eslint/schematics"
+    "defaultCollection": "@angular-eslint/schematics",
+    "analytics": "f174a763-aefc-4a88-83c3-fe0f4a26d75d"
   }
 }

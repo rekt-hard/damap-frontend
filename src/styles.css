@@ -1,0 +1,122 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* TU Colors */
+:root {
+  --main-color: #069;
+  --accent-color-lighter: #3284ad;
+  --accent-color-darker: #084f72;
+  --secondary-color: #373737;
+  --error-bg: #FAD1D5;
+  --success-bg: #E9F5D2;
+  --info-bg: #C4D8E2;
+  --warning-bg: #FFF4CB;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  letter-spacing: .03rem;
+  font-weight: 300;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+  border: 0
+}
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+
+.active {
+  background-color: #f5f5f5;
+  padding-left: 22px;
+  border-left: 8px solid #e4154b;
+  font-weight: 400;
+}
+
+.mat-icon-style {
+  font-size: smaller;
+}
+
+.mat-card-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.mat-card-left {
+  flex-direction: column;
+  /*width: 90%;*/
+}
+
+.mat-card-right {
+  /*float: right;*/
+}
+
+.mat-selected {
+  background-color: #f5f5f5 !important;
+}
+
+.mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {
+  background-color: #e4154b !important;
+}
+
+.mat-icon.mat-primary {
+  color: #e4154b !important;
+}
+
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+  background-color: #e4154b !important;
+  color: white;
+}
+
+.mat-button.mat-primary, .mat-icon-button.mat-primary, .mat-stroked-button.mat-primary {
+  color: #e4154b !important;
+}
+
+.mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {
+  color: white !important;
+}
+
+.mat-progress-bar-fill::after {
+  background-color:#e4154b !important;
+}
+
+.mat-progress-bar-buffer {
+  background-color: #777 !important;
+}
+
+.mat-input-element {
+  caret-color: #e4154b !important;
+}
+
+.mat-form-field.mat-focused .mat-form-field-label {
+  color: #e4154b !important;
+}
+
+mat-card {
+  margin: 5px;
+}
+
+.snack-error {
+  background-color: var(--error-bg);
+  color: black;
+  font-weight: bold;
+}
+
+.snack-success {
+  background-color: var(--success-bg);
+  color: black;
+  font-weight: bold;
+}
