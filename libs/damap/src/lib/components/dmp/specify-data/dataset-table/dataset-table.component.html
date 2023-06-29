@@ -4,7 +4,7 @@
   <h2 *ngIf="tableHeading">{{tableHeading | translate}}</h2>
 
   <table mat-table [dataSource]="datasets.value | datasetSource: sourceType" multiTemplateDataRows
-         class="mat-elevation-z8" aria-label="{{tableHeading | translate}}">
+    class="mat-elevation-z8" aria-label="{{tableHeading | translate}}">
     <ng-container matColumnDef="dataset">
       <th mat-header-cell *matHeaderCellDef>{{'dmp.steps.data.specify.table.header.dataset' | translate}}</th>
       <td mat-cell *matCellDef="let dataset">
@@ -50,8 +50,8 @@
     </ng-container>
 
     <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef><span
-        class="sr-only">{{'dmp.steps.data.specify.table.header.actions' | translate}}</span></th>
+      <th mat-header-cell *matHeaderCellDef><span class="sr-only">{{'dmp.steps.data.specify.table.header.actions' |
+          translate}}</span></th>
       <td mat-cell *matCellDef="let element" [style]="'text-align: right'">
         <button mat-icon-button>
           <mat-icon color="primary" (click)="openDatasetDialog(element)">edit</mat-icon>
@@ -59,11 +59,16 @@
         <button mat-icon-button>
           <mat-icon color="primary" (click)="remove(element)">delete</mat-icon>
         </button>
+        <button *ngIf="element.id && !element.datasetId " mat-icon-button>
+          <mat-icon color="primary" (click)="createDraftFromDataset(element)">post_add</mat-icon>
+        </button>
+        <button *ngIf="element.id && element.datasetId?.type === 'HANDLE' " mat-icon-button>
+          <mat-icon color="primary" (click)="openExternalLink(element)">open_in_new</mat-icon>
+        </button>
       </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="tableHeaders"></tr>
-    <tr mat-row *matRowDef="let element; columns: tableHeaders;"
-        class="element-row">
+    <tr mat-row *matRowDef="let element; columns: tableHeaders;" class="element-row">
   </table>
 </div>
