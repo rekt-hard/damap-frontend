@@ -1,18 +1,29 @@
-<mat-sidenav-container>
+<mat-sidenav-container autosize>
   <mat-sidenav
-    class="mat-sidenav-divider-grey"
     #sidenav
-    [opened]="!isSmallScreen"
-    mode="side">
+    [mode]="isSmallScreen ? 'over' : 'side'"
+    [opened]="!isSmallScreen || !isCollapsed"
+    [class.collapsed]="isCollapsed"
+    class="mat-sidenav">
     <div class="mm-navbars-top mat-focus-indicator">
       <div class="mm-navbar">
+        <button
+          mat-icon-button
+          title="{{ 'layout.menu.mobile.close' | translate }}"
+          class="sidenav-btn"
+          (click)="toggleMenu()">
+          <mat-icon style="color: white">{{
+            isCollapsed && !isSmallScreen ? "menu" : "menu_open"
+          }}</mat-icon>
+        </button>
+
         <div class="logo">
           <a
             title="Damap"
             id="damap-logo"
             class="mat-focus-indicator"
             [routerLink]="'/'">
-            {{ "title" | translate }}
+            <span *ngIf="!isCollapsed">{{ "title" | translate }}</span>
           </a>
         </div>
         <div class="languageElement">
@@ -30,8 +41,9 @@
         </div>
       </div>
     </div>
+
     <div id="user">
-      <div>{{ name }}</div>
+      <div *ngIf="!isCollapsed" class="user-name">{{ name }}</div>
       <button
         mat-icon-button
         id="logout"
@@ -40,24 +52,41 @@
         <mat-icon class="material-icon-white">logout</mat-icon>
       </button>
     </div>
+
     <mat-nav-list>
-      <a mat-list-item [routerLink]="'/dashboard'" routerLinkActive="active">{{
-        "layout.menu.home" | translate
-      }}</a>
-      <a mat-list-item [routerLink]="'/plans'" routerLinkActive="active">{{
-        "layout.menu.plans" | translate
-      }}</a>
+      <div class="nav-list">
+        <a
+          mat-list-item
+          [routerLink]="'/dashboard'"
+          routerLinkActive="active-icon"
+          [routerLinkActiveOptions]="{ exact: true }">
+          <mat-icon class="menu-icon-size">home</mat-icon>
+          <span *ngIf="!isCollapsed" class="menu-icon-text">{{
+            "layout.menu.home" | translate
+          }}</span>
+        </a>
+        <a
+          mat-list-item
+          [routerLink]="'/plans'"
+          routerLinkActive="active-icon"
+          [routerLinkActiveOptions]="{ exact: true }">
+          <mat-icon class="menu-icon-size">table_view</mat-icon>
+          <span *ngIf="!isCollapsed" class="menu-icon-text">{{
+            "layout.menu.plans" | translate
+          }}</span>
+        </a>
+      </div>
     </mat-nav-list>
   </mat-sidenav>
+
   <mat-sidenav-content>
     <mat-toolbar>
-      <mat-toolbar-row id="mainHeader" [style]="'padding: 0px;'">
+      <mat-toolbar-row id="mainHeader" style="padding: 0">
         <div class="mainHeaderRight"></div>
-        <!-- University Logo -->
         <div id="mainHeaderLogo">
           <a
             class="mat-focus-indicator"
-            title="{{ 'layout.logo.text' | translate }}"
+            [title]="'layout.logo.text' | translate"
             [href]="'layout.logo.link' | translate"
             rel="noopener">
             <img
@@ -67,25 +96,17 @@
               width="300px" />
           </a>
         </div>
-        <!-- University Logo End -->
       </mat-toolbar-row>
       <mat-toolbar-row class="mat-toolbar-row-grey">
-        <button
-          mat-icon-button
-          title="{{ 'layout.menu.mobile.close' | translate }}"
-          class="sidenav-btn"
-          (click)="toggleSidenav()">
-          <mat-icon class="material-icon-on-secondary-container">
-            {{ sidenav.opened ? "close" : "menu" }}
-          </mat-icon>
-        </button>
-        <strong translate>title</strong>
+        <strong>{{ "title" | translate }}</strong>
       </mat-toolbar-row>
     </mat-toolbar>
+
     <app-env-banner *ngIf="env === 'DEV'"></app-env-banner>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
 <div class="footer">
   <div class="version-information">
     {{ "layout.version" | translate }}: {{ version }}
