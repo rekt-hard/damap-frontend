@@ -1,11 +1,4 @@
-import {
-  AfterViewInit,
-  ChangeDetectorRef,
-  Component,
-  HostListener,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 import { AuthService } from '@damap/core';
@@ -35,7 +28,6 @@ export class LayoutComponent implements OnInit, AfterViewInit {
     private auth: AuthService,
     private translate: TranslateService,
     private configService: ConfigService,
-    private cdr: ChangeDetectorRef,
     private observer: BreakpointObserver,
   ) {
     this.env = this.configService.getEnvironment();
@@ -49,7 +41,6 @@ export class LayoutComponent implements OnInit, AfterViewInit {
 
     this.observer.observe([Breakpoints.Handset]).subscribe(result => {
       this.isSmallScreen = result.matches;
-      this.sidenav.disableClose = this.isSmallScreen;
       this.checkScreenSize();
     });
   }
@@ -58,35 +49,8 @@ export class LayoutComponent implements OnInit, AfterViewInit {
     this.checkScreenSize();
   }
 
-  @HostListener('window:resize')
-  onResize(): void {
-    this.debounce(() => this.checkScreenSize(), 300)();
-  }
-
-  private debounce(func: Function, wait: number): (...args: any[]) => void {
-    let timeout: any;
-    return (...args: any[]) => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => func.apply(this, args), wait);
-    };
-  }
-
   private checkScreenSize(): void {
     this.isCollapsed = this.isSmallScreen;
-    this.sidenav.open();
-    this.updateSidenavClasses();
-    this.cdr.detectChanges();
-  }
-
-  private updateSidenavClasses(): void {
-    const container = document.querySelector('.mat-sidenav-container');
-    if (container) {
-      container.classList.toggle(
-        'mat-sidenav-opened',
-        !this.isCollapsed || this.isSmallScreen,
-      );
-      container.classList.remove('mat-sidenav-collapsed');
-    }
   }
 
   useLanguage(language: string): void {
@@ -99,8 +63,6 @@ export class LayoutComponent implements OnInit, AfterViewInit {
   }
 
   toggleMenu(): void {
-    if (!this.isSmallScreen) {
-      this.isCollapsed = !this.isCollapsed;
-    }
+    this.isCollapsed = !this.isCollapsed;
   }
 }

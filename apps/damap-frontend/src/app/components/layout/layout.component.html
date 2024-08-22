@@ -1,9 +1,10 @@
 <mat-sidenav-container autosize>
   <mat-sidenav
     #sidenav
-    [mode]="isSmallScreen ? 'over' : 'side'"
-    [opened]="!isSmallScreen || !isCollapsed"
+    [mode]="(isSmallScreen && !isCollapsed) ? 'over' : 'side'"
+    [opened]="true"
     [class.collapsed]="isCollapsed"
+    [disableClose]="true"
     class="mat-sidenav">
     <div class="mm-navbars-top mat-focus-indicator">
       <div class="mm-navbar">
@@ -13,7 +14,7 @@
           class="sidenav-btn"
           (click)="toggleMenu()">
           <mat-icon style="color: white">{{
-            isCollapsed && !isSmallScreen ? "menu" : "menu_open"
+            isCollapsed ? "menu" : "menu_open"
           }}</mat-icon>
         </button>
 

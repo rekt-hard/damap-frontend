@@ -11,26 +11,6 @@
   display: none;
 }
 
-/* Sidenav behavior on mobile */
-@media (max-width: 1024px) {
-  .mat-sidenav {
-    width: 90px !important;
-  }
-
-  .mat-sidenav.collapsed {
-    width: 90px !important;
-  }
-
-  .mat-sidenav-content {
-    margin-left: 90px !important;
-  }
-
-  .sidenav-btn {
-    display: block;
-    margin: 0px 10px;
-  }
-}
-
 /* Sidenav behavior on desktop */
 .mat-sidenav {
   width: 301px;
@@ -215,10 +195,6 @@ svg {
   #mainHeader #mainHeaderLogo A {
     position: relative;
     margin-top: 0;
-  }
-
-  .mat-sidenav {
-    width: 90px;
   }
 
   .sidenav-btn {
